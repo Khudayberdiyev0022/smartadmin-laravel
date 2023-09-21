@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 //Route::get('/', function () {
 //  return redirect('/admin');
-//});
+//})->middleware('auth');
 
-Route::get('/', function () {
+Route::get('/admin', function () {
     return view('admin.index');
 });
 
