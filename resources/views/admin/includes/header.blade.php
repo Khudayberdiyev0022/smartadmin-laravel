@@ -43,7 +43,7 @@
     <!-- app message -->
     <!-- app notification -->
     <div class="d-flex align-items-center ml-3">
-      <form action="{{ route('logout') }}" method="post">
+      <form action="{{ localeRoute('logout') }}" method="post">
         @csrf
         <button type="submit" class="btn btn-outline-secondary d-flex align-items-center">
           Выйти
