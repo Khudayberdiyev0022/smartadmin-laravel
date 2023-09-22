@@ -1,5 +1,6 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
+@extends('layouts.auth')
+@section('content')
+    <form method="POST" action="{{ localeRoute('password.store') }}">
         @csrf
 
         <!-- Password Reset Token -->
@@ -36,4 +37,4 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+@endsection
