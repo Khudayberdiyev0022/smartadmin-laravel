@@ -35,3 +35,4 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => '[a-zA-Z]{2}'], 'm
 });
 
 require __DIR__.'/auth.php';
+//Auth::routes();
