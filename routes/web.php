@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //  return redirect('/admin');
 //})->middleware('auth');
+
 Route::get('/', function () {
   return redirect((app()->getLocale() ?: config('app.fallback_locale')).'/');
 })->name('index');
@@ -24,18 +25,13 @@ Route::get('/', function () {
 Route::get('/lang/{lang}', ['\App\Http\Controllers\IndexController', 'changeLang'])->middleware('locale')->name('change_lang');
 
 Route::group(['prefix' => '{locale}', 'where' => ['locale' => '[a-zA-Z]{2}'], 'middleware' => ['locale']], function () {
-  Route::get('/', function () {
-    return view('admin.index');
+  Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('/', [\App\Http\Controllers\Admin\IndexController::class, 'index'])->name('index');
+    Route::get('/dashboard', [\App\Http\Controllers\Admin\IndexController::class, 'dashboard'])->name('dashboard');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
   });
-});
-Route::get('/dashboard', function () {
-  return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';
