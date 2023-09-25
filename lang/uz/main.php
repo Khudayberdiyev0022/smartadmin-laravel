@@ -37,4 +37,5 @@ return [
     'Farg`ona viloyati',
     'Xorazm viloyati',
   ],
+  'admin_dashboard' => 'Boshqaruv paneli'
 ];
