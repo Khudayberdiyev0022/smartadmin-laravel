@@ -3,7 +3,7 @@
   <div class="page-logo">
     <a href="#" class="page-logo-link press-scale-down d-flex align-items-center position-relative" data-toggle="modal" data-target="#modal-shortcut">
       <img src="{{ asset('assets/img/logo.png') }}" alt="SmartAdmin WebApp" aria-roledescription="logo">
-      <span class="page-logo-text mr-1">SmartAdmin WebApp</span>
+      <span class="page-logo-text mr-1">Admin Dashboard</span>
       <span class="position-absolute text-white opacity-50 small pos-top pos-right mr-2 mt-n2"></span>
       <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>
     </a>
@@ -23,10 +23,10 @@
       <div class="info-card-text">
         <a href="#" class="d-flex align-items-center text-white">
                                     <span class="text-truncate text-truncate-sm d-inline-block">
-                                        Dr. Codex Lantern
+                                        {{ auth()->user()->name }}
                                     </span>
         </a>
-        <span class="d-inline-block text-truncate text-truncate-sm">Toronto, Canada</span>
+        <span class="d-inline-block">{{ auth()->user()->email }}</span>
       </div>
       <img src="{{ asset('assets/img/card-backgrounds/cover-2-lg.png') }}" class="cover" alt="cover">
       <a href="#" onclick="return false;" class="pull-trigger-btn" data-action="toggle" data-class="list-filter-active" data-target=".page-sidebar" data-focus="nav_filter_input">
